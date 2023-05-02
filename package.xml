@@ -1,0 +1,43 @@
+<?xml version="1.0"?>
+<?xml-model href="http://download.ros.org/schema/package_format3.xsd" schematypens="http://www.w3.org/2001/XMLSchema"?>
+<package format="3">
+  <name>camera_lidar_clustering</name>
+  <version>1.0.0</version>
+  <description>This package takes the pointcloud, projects onto the image. Takes the bounding boxes from an image detector
+  and checks wether the projected points are inside or not, and correspondingly determines the depth from the points inside the bb</description>
+  <maintainer email="m.hegazy@innopolis.university">user</maintainer>
+  <license>TODO: License declaration</license>
+
+  <buildtool_depend>ament_cmake_auto</buildtool_depend>
+
+  <depend>rclcpp</depend>
+  <depend>rclcpp_components</depend>
+
+  <depend>message_filters</depend>
+
+  <depend>cv_bridge</depend>
+  <depend>image_transport</depend>
+
+    <depend>tier4_autoware_utils</depend>
+  <depend>derived_object_msgs</depend>
+  <depend>tier4_perception_msgs</depend>
+  <depend>autoware_auto_perception_msgs</depend>
+  <depend> geometry_msgs </depend>
+  <depend>sensor_msgs</depend>
+  <depend>tf2_sensor_msgs</depend>
+
+  <depend>pcl_conversions</depend>
+
+  <depend>tf2</depend>
+  <depend>tf2_ros</depend>
+
+  <build_depend>libpcl-all-dev</build_depend>
+  <exec_depend>libpcl-all</exec_depend>
+
+  <test_depend>ament_lint_auto</test_depend>
+  <test_depend>autoware_lint_common</test_depend>
+
+  <export>
+    <build_type>ament_cmake</build_type>
+  </export>
+</package>
