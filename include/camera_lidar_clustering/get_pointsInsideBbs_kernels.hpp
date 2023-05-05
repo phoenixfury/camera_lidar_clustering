@@ -5,11 +5,10 @@
 // CUDA runtime
 #include <cuda_runtime.h>
 
-#include <iostream>
 #include <vector>
 
 // CUDA utility functions
-#include "cam_lidar_bb_regression_cuda/cuda_utils.hpp"
+#include "camera_lidar_clustering/cuda_utils.hpp"
 
 #include <opencv2/core.hpp>
 

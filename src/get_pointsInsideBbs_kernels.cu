@@ -1,4 +1,4 @@
-#include "cam_lidar_bb_regression_cuda/get_pointsInsideBbs_kernels.hpp"
+#include "camera_lidar_clustering/get_pointsInsideBbs_kernels.hpp"
 
 namespace PerceptionNS
 {
@@ -184,6 +184,7 @@ std::vector<int> get_closest_points_to_centers(
   }
   return points_in_boxes;
 }
+
 std::vector<int> get_points_inside_box(
   const std::vector<cv::Point2d> & points, const cv::Rect & box)
 {

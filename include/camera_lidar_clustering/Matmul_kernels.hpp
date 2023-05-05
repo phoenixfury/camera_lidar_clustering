@@ -7,7 +7,7 @@
 #include <cuda_runtime.h>
 
 // CUDA utility functions
-#include "cam_lidar_bb_regression_cuda/cuda_utils.hpp"
+#include "camera_lidar_clustering/cuda_utils.hpp"
 
 #include <opencv2/core.hpp>
 

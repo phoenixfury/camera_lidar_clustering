@@ -6,13 +6,15 @@
 #include <opencv2/opencv.hpp>
 
 #include <numeric>
+#include <tuple>
 #include <vector>
 
 namespace PerceptionNS
 {
 enum PointInRectangle { XMIN, YMIN, XMAX, YMAX };
 
-std::vector<cv::Rect> nms(const std::vector<cv::Rect> &, const float &);
+std::tuple<std::vector<cv::Rect>, std::vector<int>> nms(
+  const std::vector<cv::Rect> &, const float &);
 
 std::vector<std::vector<float>> get_point_from_rect(const std::vector<cv::Rect> &);
 

@@ -1,7 +1,7 @@
 // Copyright 2016 Martin Kersner, m.kersner@gmail.com
 // C++ version of http://www.pyimagesearch.com/2015/02/16/faster-non-maximum-suppression-python/
 
-#include "cam_lidar_bb_regression_cuda/classic_nms.hpp"
+#include "camera_lidar_clustering/classic_nms.hpp"
 
 using cv::Point;
 using cv::Rect;
@@ -10,10 +10,10 @@ using std::vector;
 namespace PerceptionNS
 {
 
-vector<Rect> nms(const vector<Rect> & boxes, const float & threshold)
+std::tuple<vector<Rect>, std::vector<int>> nms(const vector<Rect> & boxes, const float & threshold)
 {
   if (boxes.empty()) {
-    return vector<Rect>();
+    return {vector<Rect>(), vector<int>()};
   }
 
   // grab the coordinates of the bounding boxes
@@ -65,7 +65,7 @@ vector<Rect> nms(const vector<Rect> & boxes, const float & threshold)
     idxs = remove_by_indexes(idxs, deleteIdxs);
   }
 
-  return filter_vector(boxes, pick);
+  return {filter_vector(boxes, pick), pick};
 }
 
 vector<vector<float>> get_point_from_rect(const vector<Rect> & rect)

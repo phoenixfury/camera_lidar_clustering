@@ -11,22 +11,10 @@ k:
     1.000000,
   ]
 d: [0.003755, 0.021922, -0.002140, 0.002900, 0.000000]
-# k:
-#   [
-#     721.5377,
-#     0.000000,
-#     609.5593,
-#     0.000000,
-#     721.5377,
-#     172.8540,
-#     0.000000,
-#     0.000000,
-#     1.000000,
-#   ]
-# d: [0.0, 0.0, -0.0, 0.0, -0.0]
 lidar_name: "velodyne32"
 cam_name: "sf_stereo_right"
 use_cam_info: true
+use_projection_mat: true
 image_type: "raw"
 publish_clusters: true
 publish_debug_image: true
@@ -34,4 +22,4 @@ publish_detected_objects: true
 nms_threshold: 0.25
 crop_box_center: [150., 0., 50]
 crop_box_dims: [300., 200., 104.25]
-filter_limits: [0.90, 1.1]
+sigmoid_coeffs: [-2, 8]

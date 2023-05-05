@@ -7,6 +7,7 @@ if(NOT CMAKE_CXX_STANDARD)
   set(CMAKE_CXX_STANDARD_REQUIRED ON)
   set(CMAKE_CXX_EXTENSIONS OFF)
 endif()
+
 if(CMAKE_COMPILER_IS_GNUCXX OR CMAKE_CXX_COMPILER_ID MATCHES "Clang")
   add_compile_options(-Wall -Wextra -Wpedantic)
 endif()
@@ -17,11 +18,6 @@ if(CUDA_FOUND)
     ${CUDA_TOOLKIT_ROOT_DIR}/lib64
     ${CUDA_TOOLKIT_ROOT_DIR}/lib
   )
-  if(CUDA_VERBOSE)
-    message(STATUS "CUDA is available!")
-    message(STATUS "CUDA Libs: ${CUDA_LIBRARIES}")
-    message(STATUS "CUDA Headers: ${CUDA_INCLUDE_DIRS}")
-  endif()
   set(CUDA_AVAIL ON)
 else()
   message("CUDA NOT FOUND")
@@ -30,17 +26,11 @@ endif()
 
 set(Open3D_DIR /workspaces/autoware/open3d-devel-linux-x86_64-cxx11-abi-cuda-0.17.0/lib/cmake/Open3D)
 find_package(Open3D REQUIRED)
-# find dependencies
 
 find_package(ament_cmake_auto REQUIRED)
-find_package(Open3D REQUIRED)
 
-find_package(geometry_msgs)
 ament_auto_find_build_dependencies()
 
-# uncomment the following section in order to fill in
-# further dependencies manually.
-# find_package(<dependency> REQUIRED)
 include_directories(
   include
   ${OpenCV_INCLUDE_DIRS}
@@ -56,10 +46,12 @@ src/classic_nms.cpp
 src/MinimalBoundingBox.cpp
 utils/utils.cpp
 )
+
 cuda_add_library(cuda_kernels_lib SHARED
 src/Matmul_kernels.cu
 src/get_pointsInsideBbs_kernels.cu
 )
+
 target_link_libraries(camera_lidar_clustering
  ${OpenCV_LIBS}
 ${rclcpp_LIBRARIES}
@@ -69,8 +61,8 @@ ${CUBLAS_LIBRARIES}
 cuda_kernels_lib)
 
 rclcpp_components_register_node(camera_lidar_clustering
-  PLUGIN "PerceptionNS::BbRegressorCuda"
-  EXECUTABLE bb_regressor_cuda_exe
+  PLUGIN "PerceptionNS::CameraLidarClusterer"
+  EXECUTABLE clusterer_cuda_exe
 )
 
 install(

@@ -8,7 +8,7 @@ from ament_index_python.packages import get_package_share_directory
 
 def generate_launch_description():
     config = os.path.join(
-        get_package_share_directory("cam_lidar_bb_regression_cuda"),
+        get_package_share_directory("camera_lidar_clustering"),
         "config",
         "params.yaml",
     )
@@ -20,13 +20,10 @@ def generate_launch_description():
         executable="component_container",
         composable_node_descriptions=[
             ComposableNode(
-                package="cam_lidar_bb_regression_cuda",
-                plugin="PerceptionNS::BbRegressorCuda",
-                name="bb_regressor_cuda_exe",
+                package="camera_lidar_clustering",
+                plugin="PerceptionNS::CameraLidarClusterer",
+                name="clusterer_cuda_exe",
                 remappings=[
-                    # ("input/cam", "/baumer/sf_stereo_right/image_raw"),
-                    # ("/input/camera_info", "/baumer/sf_stereo_right/camera_info"),
-                    # ("input/pointcloud", "/velodyne_points"),
                     ("input/cam", "/out/image_raw"),
                     ("/input/camera_info", "/out/camera_info"),
                     ("input/pointcloud", "/topicmaker/pcl_points"),

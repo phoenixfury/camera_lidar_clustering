@@ -1,6 +1,6 @@
 // Copyright 16.04.2021. Alexander Kormanovsky
 
-#include "cam_lidar_bb_regression_cuda/MinimalBoundingBox.hpp"
+#include "camera_lidar_clustering/MinimalBoundingBox.hpp"
 
 #include <float.h>
 #include <math.h>
