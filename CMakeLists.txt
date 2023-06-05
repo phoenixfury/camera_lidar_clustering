@@ -24,7 +24,6 @@ else()
   set(CUDA_AVAIL OFF)
 endif()
 
-set(Open3D_DIR /workspaces/autoware/open3d-devel-linux-x86_64-cxx11-abi-cuda-0.17.0/lib/cmake/Open3D)
 find_package(Open3D REQUIRED)
 
 find_package(ament_cmake_auto REQUIRED)

@@ -418,8 +418,7 @@ open3d::geometry::OrientedBoundingBox CameraLidarClusterer::regress_bounding_box
   open3d_bounding_box.extent_ = bb_extent;
   open3d_bounding_box.R_ = open3d_bounding_box.GetRotationMatrixFromZYX(bb_rot);
 
-  return open3d_bounding_box;  // cv::Mat cv_mat(3, 4, CV_32FC1);
-  // cv_mat = p_mat_;
+  return open3d_bounding_box;
 }
 }  // namespace PerceptionNS
 

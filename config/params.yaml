@@ -14,7 +14,7 @@ d: [0.003755, 0.021922, -0.002140, 0.002900, 0.000000]
 lidar_name: "velodyne32"
 cam_name: "sf_stereo_right"
 use_cam_info: true
-use_projection_mat: true
+use_projection_mat: false
 image_type: "raw"
 publish_clusters: true
 publish_debug_image: true
